@@ -6,7 +6,7 @@ setup(
     author='Daniel Klimmer',
     author_email='danielklimmer2000@protonmail.com',
     packages=['splitticai'],
-    install_requires=['requests', 'bs4'],
+    install_requires=['requests', 'bs4', 'base64'],
     version='3.0',
     license='MIT',
     description='The Most Advanced AI Ever',
