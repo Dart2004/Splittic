@@ -6,7 +6,7 @@ class AI:
     def __init__(self, API_KEY):
         self.API_KEY = API_KEY
 
-    def makeimg(text, filename):
+    def makeimg(self, text, filename):
         req = requests.get(
             f"https://ai.dragonspot.tk/api/img/{text}",
             headers={"api-key": self.API_KEY},
@@ -23,7 +23,7 @@ class AI:
                     return True
         return False
 
-    def qa(text, userid = None):
+    def qa(self, text, userid = None):
         if not userid:
             req = requests.get(
                 f"https://ai.dragonspot.tk/api/qa/{text}",
@@ -43,7 +43,7 @@ class AI:
                 return req.text
             return False
 
-    def scan(url):
+    def scan(self,url):
         req = requests.get(
             f"https://ai.dragonspot.tk/api/scan/{url}",
             headers={"api-key": self.API_KEY},
