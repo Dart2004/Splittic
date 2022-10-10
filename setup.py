@@ -10,5 +10,5 @@ setup(
     version='1.0',
     license='MIT',
     description='The Most Advanced AI Ever',
-    long_description=open('README.rst')
+    long_description=open('README.rst','r').read()
 )
