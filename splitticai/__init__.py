@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import base64
 
 
 class AI:
@@ -15,16 +16,12 @@ class AI:
         if req.status_code == 200:
             bs = BeautifulSoup(req.text, "html.parser")
             img = bs.find("img")
-            if img:
-                img = img.get("src")
-                if img:
-                    # base64
-                    if img.startswith("data:image/png;base64,"):
-                        img = img.replace("data:image/png;base64,", "")
-                        with open(filename, "wb") as f:
-                            f.write(img)
-                        return True
-                    return True
+            img = img["src"]
+            img = img.replace("data:image/png;base64,", "")
+            img = base64.b64decode(img)
+            with open(filename, "wb") as f:
+                f.write(img)
+
         return False
 
     def qa(self, text, userid = None):
