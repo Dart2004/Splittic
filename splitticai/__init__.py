@@ -18,8 +18,12 @@ class AI:
             if img:
                 img = img.get("src")
                 if img:
-                    with open(filename, "wb") as f:
-                        f.write(requests.get(img).content)
+                    # base64
+                    if img.startswith("data:image/png;base64,"):
+                        img = img.replace("data:image/png;base64,", "")
+                        with open(filename, "wb") as f:
+                            f.write(img)
+                        return True
                     return True
         return False
 
